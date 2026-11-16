@@ -1,6 +1,11 @@
 pipeline {
     agent any
 
+    environment {
+        REGISTRY_IP = credentials('registry-ip')
+        REGISTRY_PORT = credentials('registry-port')
+    }
+
     stages {
         stage('Checkout') {
             steps {
@@ -11,7 +16,7 @@ pipeline {
         stage('Build calc-service') {
             steps {
                 dir('calc-service') {
-                    sh 'docker build -t calculator-calc:latest .'
+                    sh 'docker build -t $REGISTRY_IP:$REGISTRY_PORT/calculator-calc:latest .'
                 }
             }
         }
@@ -19,7 +24,7 @@ pipeline {
         stage('Build sum-service') {
             steps {
                 dir('sum-service') {
-                    sh 'docker build -t calculator-sum:latest .'
+                    sh 'docker build -t $REGISTRY_IP:$REGISTRY_PORT/calculator-sum:latest .'
                 }
             }
         }
@@ -27,7 +32,7 @@ pipeline {
         stage('Build sub-service') {
             steps {
                 dir('sub-service') {
-                    sh 'docker build -t calculator-sub:latest .'
+                    sh 'docker build -t $REGISTRY_IP:$REGISTRY_PORT/calculator-sub:latest .'
                 }
             }
         }
@@ -35,7 +40,7 @@ pipeline {
         stage('Build mul-service') {
             steps {
                 dir('mul-service') {
-                    sh 'docker build -t calculator-mul:latest .'
+                    sh 'docker build -t $REGISTRY_IP:$REGISTRY_PORT/calculator-mul:latest .'
                 }
             }
         }
@@ -43,7 +48,7 @@ pipeline {
         stage('Build div-service') {
             steps {
                 dir('div-service') {
-                    sh 'docker build -t calculator-div:latest .'
+                    sh 'docker build -t $REGISTRY_IP:$REGISTRY_PORT/calculator-div:latest .'
                 }
             }
         }
