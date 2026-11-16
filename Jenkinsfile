@@ -55,11 +55,11 @@ pipeline {
 
         stage ('Push images') {
             steps {
-                sh 'docker push $REGISTRY_IP:$REGISTRY_PORT/calculator-calc:latest
-                sh 'docker push $REGISTRY_IP:$REGISTRY_PORT/calculator-sum:latest
-                sh 'docker push $REGISTRY_IP:$REGISTRY_PORT/calculator-sub:latest
-                sh 'docker push $REGISTRY_IP:$REGISTRY_PORT/calculator-mul:latest
-                sh 'docker push $REGISTRY_IP:$REGISTRY_PORT/calculator-div:latest
+                sh 'docker push $REGISTRY_IP:$REGISTRY_PORT/calculator-calc:latest'
+                sh 'docker push $REGISTRY_IP:$REGISTRY_PORT/calculator-sum:latest'
+                sh 'docker push $REGISTRY_IP:$REGISTRY_PORT/calculator-sub:latest'
+                sh 'docker push $REGISTRY_IP:$REGISTRY_PORT/calculator-mul:latest'
+                sh 'docker push $REGISTRY_IP:$REGISTRY_PORT/calculator-div:latest'
             }
         }
     }
